@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1073091616092",
+    "firebase_url": "https://quak-2b421.firebaseio.com",
+    "project_id": "quak-2b421",
+    "storage_bucket": "quak-2b421.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1073091616092:android:e3f3ada491027bea",
+        "android_client_info": {
+          "package_name": "com.example.android.quak"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1073091616092-4ch9i8l6jrgl67hn4qsatkmf3elcjb7u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.quak",
+            "certificate_hash": "5353995de0f82ba9986f16be165e67bc20012000"
+          }
+        },
+        {
+          "client_id": "1073091616092-b0a7k6jvehife88o9nm39ohvk7iqnc92.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0I4ovBzt9qDIWkY0xUt5WAfxYJ-qKIWM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1073091616092-b0a7k6jvehife88o9nm39ohvk7iqnc92.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

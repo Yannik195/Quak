@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/main"
+        android:title="Main"
+        android:icon="@drawable/ic_navigation_placeholder_2"/>
+
+    <item
+        android:id="@+id/main_2"
+        android:title="Main 2" />
+    <item
+        android:id="@+id/main_3"
+        android:title="Main 3" />
+
+
+
+
+</menu>
