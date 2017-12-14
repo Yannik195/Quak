@@ -12,7 +12,8 @@
     android:layout_gravity="center"
     android:layout_margin="4dp"
     card_view:cardCornerRadius="4dp"
-    card_view:cardElevation="2dp">
+    card_view:cardElevation="2dp"
+    card_view:cardBackgroundColor="@color/colorPrimary">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -31,6 +32,7 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="1"
+                android:padding="4dp"
                 android:paddingRight="8dp"
                 app:srcCompat="@drawable/common_google_signin_btn_icon_dark" />
 
@@ -41,20 +43,30 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:text="TextView"
+                android:textColor="#FFFFFF"
                 android:textSize="12sp" />
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/quak_image_view"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="170dp">
+
+            <ImageView
+                android:id="@+id/quak_image_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </FrameLayout>
+
+
 
         <TextView
             android:id="@+id/quak_message_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:text="Text" />
+            android:text="Text"
+            android:textColor="#FFFFFF" />
 
 
     </LinearLayout>

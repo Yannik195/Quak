@@ -19,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.BitmapImageViewTarget;
 
 
 import java.util.List;
@@ -50,7 +51,7 @@ public class QuakPostAdapter extends ArrayAdapter<QuakPost> {
         }
 
         TextView messageTextView = (TextView) convertView.findViewById(R.id.quak_message_text_view);
-        ImageView imageView = (ImageView) convertView.findViewById(R.id.quak_image_view);
+        final ImageView imageView = (ImageView) convertView.findViewById(R.id.quak_image_view);
         TextView userNameTextView = convertView.findViewById(R.id.user_text_view);
         final ImageView profilePictureImageView = convertView.findViewById(R.id.user_image_view);
 
@@ -74,12 +75,27 @@ public class QuakPostAdapter extends ArrayAdapter<QuakPost> {
 */
 
 
+        Glide.with(getContext()).load(currentQuakPost.getProfilePictureUrl()).asBitmap().centerCrop().override(100,100).into(new BitmapImageViewTarget(profilePictureImageView) {
+            @Override
+            protected void setResource(Bitmap resource) {
+                RoundedBitmapDrawable circularBitmapDrawable =
+                        RoundedBitmapDrawableFactory.create(getContext().getResources(), resource);
+                circularBitmapDrawable.setCircular(true);
+                profilePictureImageView.setImageDrawable(circularBitmapDrawable);
+            }
+        });
+
+
+
+
+ /*
         Glide.with(getContext())
                 .load(currentQuakPost.getProfilePictureUrl())
                 .dontAnimate()
                 .override(120,120)
                 .centerCrop()
                 .into(profilePictureImageView);
+*/
 
 
         Glide.with(getContext())

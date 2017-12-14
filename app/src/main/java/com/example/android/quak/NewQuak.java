@@ -106,7 +106,7 @@ public class NewQuak extends AppCompatActivity {
         // Get the layout inflater
         LayoutInflater inflater = getLayoutInflater();
         builder.setView(inflater.inflate(R.layout.new_quak_loading_alert, null));
-        AlertDialog dialog = builder.create();
+        final AlertDialog dialog = builder.create();
         dialog.show();
 
         StorageReference photoRef = mPhotosStorageReference.child(selectedImageUri.getLastPathSegment());
@@ -118,6 +118,7 @@ public class NewQuak extends AppCompatActivity {
                 QuakPost quakPost = new QuakPost(mMessageEditText.getText().toString().trim(), downloadUri.toString(), mUsername, mProfilePictureUrl);
                 mQuakReference.push().setValue(quakPost);
                 finish();
+                dialog.dismiss();
             }
         });
     }

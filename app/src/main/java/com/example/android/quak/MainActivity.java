@@ -1,10 +1,17 @@
 package com.example.android.quak;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -16,6 +23,9 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.android.quak.Fragments.NewQuakPostFragment;
+import com.example.android.quak.Fragments.ProfileFragment;
+import com.example.android.quak.Fragments.ViewPagerAdapter;
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.auth.FirebaseAuth;
@@ -57,7 +67,132 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main_activity_view_pager);
+
+
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+        mDatabaseReference = mFirebaseDatabase.getReference().child("quak");
+        mFirebaseAuth = FirebaseAuth.getInstance();
+
+        /*
+        final ViewPager viewPager = findViewById(R.id.pager);
+        final ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        viewPagerAdapter.addFragment(new NewQuakPostFragment(),"new Quak");
+        viewPager.setAdapter(viewPagerAdapter);
+        */
+
+
+/*
+        final FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.pager, new NewQuakPostFragment()).commit();
+        */
+
+        final FragmentManager manager = getSupportFragmentManager();
+        manager.beginTransaction().addToBackStack("home").add(R.id.frame_layout, new NewQuakPostFragment()).commit();
+
+
+
+        mBottomNavigationView = findViewById(R.id.bottom_navigation_view);
+        mBottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.home:
+
+                        Log.i("MainActivity", "BNV: Home");
+                        manager.beginTransaction().replace(R.id.frame_layout, new NewQuakPostFragment()).commit();
+
+
+                    case R.id.trending:
+                        fabVisibilityGone();
+                        Log.i("MainActivity", "BNV: Trending");
+
+                        break;
+                    case R.id.chat:
+                        fabVisibilityGone();
+                        break;
+                    case R.id.profile:
+                        fabVisibilityGone();
+                        Bundle profileArguments = new Bundle();
+                        profileArguments.putString("mUsername", mUsername);
+                        profileArguments.putString("mProfilePictureUrl", mProfilePictureUrl);
+                        ProfileFragment profileFragment = new ProfileFragment();
+                        profileFragment.setArguments(profileArguments);
+                        manager.beginTransaction().replace(R.id.frame_layout,profileFragment).commit();
+                        Log.i("MainActivity", "BNV: Profile");
+                        break;
+                    case R.id.cloud:
+                        fabVisibilityGone();
+                        Log.i("MainActivity", "BNV: Cloud");
+                        break;
+
+                }
+                return true;
+            }
+        });
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            for (UserInfo profile : user.getProviderData()) {
+                // Id of the provider (ex: google.com)
+                String providerId = profile.getProviderId();
+
+                // UID specific to the provider
+                String uid = profile.getUid();
+
+                // Name, email address, and profile photo Url
+                String name = profile.getDisplayName();
+                String email = profile.getEmail();
+                Uri photoUrl = profile.getPhotoUrl();
+
+                Log.i("User Info ", "providerid, uid, name, email, photoUrl: " + providerId + uid + name + email + photoUrl);
+            }
+        }
+
+        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null){
+                    mUsername = user.getDisplayName();
+                    mProfilePictureUrl = user.getPhotoUrl().toString();
+
+                    Log.i(LOG_TAG, "Username: " + mUsername);
+                } else {
+                    startActivityForResult(
+                            AuthUI.getInstance()
+                                    .createSignInIntentBuilder()
+                                    .setIsSmartLockEnabled(true)
+                                    .setAvailableProviders(
+                                            Arrays.asList(new AuthUI.IdpConfig.Builder(AuthUI.EMAIL_PROVIDER).build(),
+                                                    new AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build()))
+                                    .build(),
+                            RC_SIGN_IN);
+                }
+            }
+        };
+
+        mFirebaseAuth.addAuthStateListener(mAuthStateListener);
+
+/*
+        fab = findViewById(R.id.floatingActionButton);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, NewQuak.class);
+                intent.putExtra("userName", mUsername);
+                intent.putExtra("profilePictureUrl", mProfilePictureUrl);
+                startActivity(intent);
+            }
+        });
+
+
+
+
+
+
+
+
 
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mDatabaseReference = mFirebaseDatabase.getReference().child("quak");
@@ -191,22 +326,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void setProfilePicture(String uri){
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-        UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                .setPhotoUri(Uri.parse(uri))
-                .build();
-    }
-
-    private void getTimeStamp(){
-        long time = System.currentTimeMillis();
-        SimpleDateFormat format = new SimpleDateFormat("hh:mm");
-        DateFormat dateFormat = DateFormat.getDateTimeInstance();
-        String dateString2 = dateFormat.format(time);
-        String dateString = format.format(time);
-        Log.i(LOG_TAG, "Time: " + dateString2);
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -225,10 +345,15 @@ public class MainActivity extends AppCompatActivity {
                 changeProfilePicture();
                 return true;
             case R.id.time_stamp:
-                getTimeStamp();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+        */
     }
+
+    private void fabVisibilityGone(){
+        fab.setVisibility(View.GONE);
+    }
+
 }
