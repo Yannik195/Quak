@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:orientation="vertical">
+
+
+    <ListView
+        android:id="@+id/chat_message_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/relativeLayout"
+        android:layout_margin="8dp"
+        android:layout_weight="1"
+        android:divider="@null"
+        android:dividerHeight="10.0sp" >
+
+
+    </ListView>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="64dp">
+
+        <ImageView
+            android:id="@+id/image_preview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignBottom="@+id/chat_message_list_view"
+            android:layout_alignParentTop="false"
+            app:srcCompat="@drawable/common_google_signin_btn_icon_dark" />
+    </FrameLayout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary">
+
+
+        <TextView
+            android:id="@+id/repost_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="false"
+            android:background="@color/colorAccent"
+            android:gravity="center"
+            android:text="REPOST"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:id="@+id/buttons_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true">
+
+            <ImageButton
+                android:id="@+id/add_photo_image_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_margin="16dp"
+                android:background="@null"
+                android:visibility="invisible"
+                app:srcCompat="@drawable/ic_action_add_photo" />
+
+            <ImageView
+                android:id="@+id/send_button_activity_chat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_margin="16dp"
+                app:srcCompat="@drawable/ic_action_send" />
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/edit_text_activity_chat"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_toStartOf="@+id/buttons_layout"
+            android:ems="10"
+            android:hint="Type..."
+            android:inputType="textPersonName"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

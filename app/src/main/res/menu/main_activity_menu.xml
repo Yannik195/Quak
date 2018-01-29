@@ -7,13 +7,9 @@
         android:title="@string/log_out"
         app:showAsAction="never"/>
 
-    <item android:id="@+id/change_profile_picture"
-        android:title="Change Profile Picture"
-        app:showAsAction="never"/>
-
     <item
-        android:id="@+id/time_stamp"
-        android:title="Time Stamp"
+        android:id="@+id/detach"
+        android:title="Detach"
         app:showAsAction="never"/>
 
 </menu>

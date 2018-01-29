@@ -1,78 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<FrameLayout android:layout_width="match_parent"
+<FrameLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:layout_margin="4dp"
-    card_view:cardCornerRadius="4dp"
-    card_view:cardElevation="2dp"
-    card_view:cardBackgroundColor="@color/colorPrimary">
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_gravity="center"
+        android:layout_margin="4dp"
+        card_view:cardBackgroundColor="@color/colorPrimary"
+        card_view:cardCornerRadius="4dp">
 
-        <LinearLayout
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/user_image_view"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:padding="4dp"
-                android:paddingRight="8dp"
-                app:srcCompat="@drawable/common_google_signin_btn_icon_dark" />
-
-            <TextView
-                android:id="@+id/user_text_view"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:text="TextView"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/user_image_view"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:padding="4dp"
+                    android:paddingRight="8dp"
+                    app:srcCompat="@drawable/common_google_signin_btn_icon_dark" />
+
+                <TextView
+                    android:id="@+id/user_text_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="TextView"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="170dp">
+
+                <ImageView
+                    android:id="@+id/quak_image_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
+                    />
+
+
+            </FrameLayout>
+
+
+            <TextView
+                android:id="@+id/quak_message_text_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="Text"
                 android:textColor="#FFFFFF"
-                android:textSize="12sp" />
+
+                />
+
+
+            <LinearLayout
+                android:id="@+id/interact_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/imageView2"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        app:srcCompat="@drawable/ic_action_chat" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="5"
+                    android:text="Interact"
+                    android:textAllCaps="true"
+                    android:textColor="#37474F"
+                    android:textSize="16sp" />
+
+
+            </LinearLayout>
+
+
         </LinearLayout>
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="170dp">
 
-            <ImageView
-                android:id="@+id/quak_image_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-        </FrameLayout>
-
-
-
-        <TextView
-            android:id="@+id/quak_message_text_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:text="Text"
-            android:textColor="#FFFFFF" />
-
-
-    </LinearLayout>
-
-
-</android.support.v7.widget.CardView>
+    </android.support.v7.widget.CardView>
 
 </FrameLayout>
 

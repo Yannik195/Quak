@@ -5,7 +5,6 @@
     <item
         android:title="@string/post_quak"
         android:id="@+id/post_quak"
-        app:showAsAction="always"
-        android:icon="@drawable/ic_action_check"/>
+        app:showAsAction="always" />
 
 </menu>

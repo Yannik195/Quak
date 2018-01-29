@@ -7,16 +7,31 @@
     xmlns:android="http://schemas.android.com/apk/res/android" >
 
 
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-8dp"
+        android:indeterminate="true"
+        android:visibility="visible" />
+
+    <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/swiperefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/new_quak_post_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@null">
 
 
-<ListView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/new_quak_post_list_view"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:divider="@null">
+        </ListView>
 
+    </android.support.v4.widget.SwipeRefreshLayout>
 
-</ListView>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/new_quak_post_fragment_fab"
@@ -29,7 +44,17 @@
         android:clickable="true"
         app:srcCompat="@drawable/ic_action_add" />
 
-    </RelativeLayout>
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111"/>
+
+</RelativeLayout>
 
 
 

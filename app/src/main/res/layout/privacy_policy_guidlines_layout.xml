@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="8dp"
+    android:paddingEnd="32dp"
+    android:paddingStart="32dp"
+    android:paddingTop="32dp">
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="To continue you have to agree with our " />
+
+    <TextView
+        android:id="@+id/privacy_policy_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Privacy Policy"
+        android:textAllCaps="true"
+        android:textColor="@color/fui_linkColor"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="and" />
+
+    <TextView
+        android:id="@+id/user_guidlines_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="User Guidlines"
+        android:textAllCaps="true"
+        android:textColor="@color/fui_linkColor" />
+
+    <CheckBox
+        android:id="@+id/agree_checkbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="I Agree" />
+</LinearLayout>

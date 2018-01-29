@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -13,7 +14,11 @@
             android:id="@+id/profile_profile_picture_image_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="24dp"
+            android:elevation="5dp"
+            android:paddingBottom="12dp"
+            android:paddingEnd="24dp"
+            android:paddingStart="24dp"
+            android:paddingTop="24dp"
             app:srcCompat="@color/colorPrimary" />
     </FrameLayout>
 
@@ -24,5 +29,29 @@
         android:layout_gravity="center"
         android:text="TextView"
         android:textColor="#FFFFFF"
-        android:textSize="18sp" />
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/profile_points_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        tools:text="Points" />
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/sliding_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabMode="fixed" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="1"
+        android:background="@android:color/white" />
+
 </LinearLayout>

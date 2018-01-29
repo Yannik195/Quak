@@ -7,47 +7,53 @@
     android:orientation="vertical"
     android:padding="16dp"
     tools:context="com.example.android.quak.NewQuak"
-    android:background="@color/colorPrimaryDark">
+    >
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="175dp"
+            tools:srcCompat="@drawable/common_google_signin_btn_icon_dark" />
+
+        <ImageButton
+            android:id="@+id/take_picture_image_circle"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:background="@drawable/circle"
+            android:elevation="7dp"
+            app:srcCompat="@drawable/ic_action_add_photo" />
+
+    </RelativeLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/message_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="TextView" />
-
-        <EditText
-            android:id="@+id/message_edit_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="enter message"
-            android:inputType="textPersonName" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/choose_an_image_text_view"
+        <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Choose an Image" />
+            android:layout_height="match_parent"
+            android:layout_weight="1">
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="175dp"
-            app:srcCompat="@drawable/common_google_signin_btn_icon_light" />
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/message_edit_text"
+                android:layout_width="270dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:hint="Be creative!"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white" />
+        </android.support.design.widget.TextInputLayout>
 
     </LinearLayout>
 
